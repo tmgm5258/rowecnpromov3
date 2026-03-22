@@ -473,6 +473,78 @@
         .reg-entity { font-size: 11px; color: var(--gray-500); line-height: 1.7; }
         .reg-entity strong { color: var(--gray-700); display: block; margin-bottom: 4px; }
 
+        /* ============ DESIGNER ANNOTATIONS ============ */
+        .annotation {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #FF2D55;
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 16px rgba(255,45,85,0.4);
+            animation: annotationPulse 2s ease-in-out infinite;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .annotation::before {
+            content: '⚠️';
+            font-size: 14px;
+        }
+        .annotation-section {
+            position: relative;
+        }
+        .annotation-hero {
+            position: absolute;
+            top: 90px;
+            left: 20px;
+            z-index: 50;
+        }
+        .annotation-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #FF2D55;
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 16px rgba(255,45,85,0.4);
+            animation: annotationPulse 2s ease-in-out infinite;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        .annotation-badge::before {
+            content: '⚠️';
+            font-size: 14px;
+        }
+        .annotation-note {
+            display: block;
+            margin-top: 6px;
+            background: rgba(255,45,85,0.08);
+            border-left: 3px solid #FF2D55;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: #FF2D55;
+            font-weight: 600;
+            line-height: 1.5;
+            border-radius: 0 6px 6px 0;
+            max-width: 340px;
+        }
+        @keyframes annotationPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.75; transform: scale(1.03); }
+        }
+
         /* ============ ANIMATIONS ============ */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
@@ -488,6 +560,8 @@
             .regulatory-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
+            .annotation, .annotation-badge, .annotation-note, .annotation-hero { font-size: 10px; }
+            .annotation-note { max-width: 260px; font-size: 10px; }
             .top-nav { padding: 0 20px; height: 64px; }
             .nav-btn-outline { display: none; }
             .social-sidebar { display: none; }
@@ -550,6 +624,10 @@
     <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-bg"></div>
+        <div class="annotation-hero">
+            <div class="annotation-badge">UPDATED — NEW HEADLINE</div>
+            <div class="annotation-note">New H1 & H2 (Option C approved by Ryan).<br>Needs new hero banner visual to match — old $700 image removed.</div>
+        </div>
         <div class="hero-content">
             <h1>Real Cash Back. No Trading Credits.</h1>
             <h2>Experience the ECN advantage with $5 USD real cash back for every lot you trade this April. No complex bonuses — just withdrawable cash.</h2>
@@ -565,7 +643,9 @@
     </section>
 
     <!-- HOW TO GET YOUR CASHBACK -->
-    <section id="steps" class="steps-section">
+    <section id="steps" class="steps-section" style="position:relative;">
+        <div class="annotation" style="z-index:10;">UPDATED — SINGLE FLOW, NO TOGGLE</div>
+        <div style="position:absolute;top:40px;left:12px;z-index:10;"><div class="annotation-note">New User / Existing User toggle removed.<br>Single 3-step flow for new clients only.<br>Updated titles & copy throughout.</div></div>
         <div class="container reveal">
             <h2 class="section-title">How To Get Your Cashback?</h2>
             <p class="section-subtitle">Follow these 3 simple steps to start earning real cash back on your trades</p>
@@ -598,8 +678,10 @@
     </section>
 
     <!-- ELIGIBLE PRODUCTS -->
-    <section class="products-section">
-        <div class="products-wrapper reveal">
+    <section class="products-section" style="position:relative;z-index:1;">
+        <div class="annotation" style="z-index:10;">UPDATED — $5/LOT, 50 LOTS, NEEDS NEW IMAGES</div>
+        <div style="position:absolute;top:40px;left:12px;z-index:10;"><div class="annotation-note">Changed: $7→$5 per lot, 100→50 lots, $700→$250.<br>"Bonus credit" → "Cashback" throughout.<br>Old product card images had $7 baked in — needs new images from design.</div></div>
+        <div class="products-wrapper reveal" style="position:relative;z-index:0;">
             <h2 class="section-title">What Products Are Eligible<br>for the Cashback?</h2>
             <p class="section-subtitle">Trade the following products during the campaign to earn your cashback</p>
             <div class="products-grid">
@@ -624,7 +706,9 @@
     </section>
 
     <!-- KEY TERMS & CONDITIONS -->
-    <section class="terms-section">
+    <section class="terms-section" style="position:relative;">
+        <div class="annotation" style="z-index:10;">UPDATED — NEW CARDS, REMOVED BONUS CREDIT RULES</div>
+        <div style="position:absolute;top:40px;left:12px;z-index:10;"><div class="annotation-note">"Bonus Credit Rules" card removed (this is cash, not credit).<br>Replaced with "Trading Rules" (2-min hold, open+close within period).<br>"Eligibility" updated: new clients only, ECN accounts only.<br>"Cashback Mechanics" updated: $5/lot, 50 lots, $250.</div></div>
         <div class="container reveal">
             <h2 class="section-title">Key Terms & Conditions</h2>
             <p class="section-subtitle">Please review the key terms before opting in</p>
@@ -676,7 +760,9 @@
     </section>
 
     <!-- FAQ SECTION -->
-    <section class="faq-section">
+    <section class="faq-section" style="position:relative;">
+        <div class="annotation" style="z-index:10;">REWRITTEN — ALL NEW FAQ CONTENT</div>
+        <div style="position:absolute;top:40px;left:12px;z-index:10;"><div class="annotation-note">All 7 FAQs rewritten for cashback mechanics.<br>Removed "Can I cash out?" FAQ (yes, it IS cash now).<br>Added: eligibility, trading rules, real cash vs credit FAQs.</div></div>
         <div class="container reveal">
             <h2 class="section-title">Frequently Asked Questions</h2>
             <p class="section-subtitle">Any questions? We've answered the most common ones below!</p>
